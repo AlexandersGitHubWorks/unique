@@ -13,10 +13,26 @@ class IndexController extends Controller
     public function execute(Request $request)
     {
         $pages = Page::all();
-        $portfolios = Portfolio::get(['name', 'filter', 'image']);
         $services = Service::all();
         $employees = Employee::all();
+        $portfolios = Portfolio::all();
 
-        return view('site.index');
+        $menu = [];
+        foreach ($pages as $page) {
+            $menu[] = ['title' => $page->name, 'anchor' => $page->alias];
+        }
+        $menu[] = ['title' => 'Services', 'anchor' => 'service'];
+        $menu[] = ['title' => 'Portfolio', 'anchor' => 'Portfolio'];
+        $menu[] = ['title' => 'Clients', 'anchor' => 'clients'];
+        $menu[] = ['title' => 'Team', 'anchor' => 'team'];
+        $menu[] = ['title' => 'Contact', 'anchor' => 'contact'];
+
+        return view('site.index', [
+            'menu'       => $menu,
+            'pages'      => $pages,
+            'services'   => $services,
+            'employees'  => $employees,
+            'portfolios' => $portfolios,
+        ]);
     }
 }

@@ -1,63 +1,62 @@
-<!--Hero_Section-->
-<section id="hero_section" class="top_cont_outer">
-    <div class="hero_wrapper">
-        <div class="container">
-            <div class="hero_section">
-                <div class="row">
-                    <div class="col-lg-5 col-sm-7">
-                        <div class="top_left_cont zoomIn wow animated">
-                            <h2>We create <strong>awesome</strong> web templates</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text printer took a galley of type and scrambled
-                                it to make a type specimen.</p>
-                            <a href="#service" class="read_more2">Read more</a></div>
-                    </div>
-                    <div class="col-lg-7 col-sm-5">
-                        <img src="{{ asset('assets/img/main_device_image.png') }}" class="zoomIn wow animated" alt=""/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--Hero_Section-->
+@if(isset($pages) && is_object($pages) && $pages->isNotEmpty())
 
-<section id="aboutUs"><!--Aboutus-->
-    <div class="inner_wrapper">
-        <div class="container">
-            <h2>About Us</h2>
-            <div class="inner_section">
-                <div class="row">
-                    <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right"><img
-                                src="{{ asset('assets/img/about-img.jpg') }}"
-                                class="img-circle delay-03s animated wow zoomIn" alt=""></div>
-                    <div class=" col-lg-7 col-md-7 col-sm-7 col-xs-12 pull-left">
-                        <div class=" delay-01s animated fadeInDown wow animated">
-                            <h3>Lorem Ipsum has been the industry's standard dummy text ever..</h3><br/>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book.PageMaker
-                                including versions of Lorem Ipsum.</p> <br/>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book. It has
-                                survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged like Aldus PageMaker including versions of Lorem
-                                Ipsum.</p>
-                        </div>
-                        <div class="work_bottom"><span>Want to know more..</span> <a href="#contact"
-                                                                                     class="contact_btn">Contact Us</a>
+    @foreach($pages as $page)
+
+        @if($page->alias === 'home')
+            <!--Home-->
+            <section id="home" class="top_cont_outer">
+                <div class="hero_wrapper">
+                    <div class="container">
+                        <div class="hero_section">
+                            <div class="row">
+                                <div class="col-lg-5 col-sm-7">
+                                    <div class="top_left_cont zoomIn wow animated">
+                                        {!! $page->text !!}
+                                        <a href="{{ route('pages', ['alias' => $page->alias]) }}" class="read_more2">Read
+                                            more</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-sm-5">
+                                    {!! Html::image('assets/img/' . $page->image, '', ['class' => 'zoomIn wow animated']) !!}
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
+            </section>
+            <!--Home-->
+        @else
+            <!--{{ $page->name }}-->
+            <section id="about-us">
+                <div class="inner_wrapper">
+                    <div class="container">
+                        <h2>{{ $page->name }}</h2>
+                        <div class="inner_section">
+                            <div class="row">
+                                <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
+                                    {!! Html::image('assets/img/' . $page->image, '', ['class' => 'img-circle delay-03s animated wow zoomIn']) !!}
+                                </div>
+                                <div class=" col-lg-7 col-md-7 col-sm-7 col-xs-12 pull-left">
+                                    <div class=" delay-01s animated fadeInDown wow animated">
+                                        {!! $page->text !!}
+                                    </div>
+                                    <div class="work_bottom"><span>Want to know more..</span>
+                                        <a href="{{ route('pages', ['alias' => $page->alias]) }}" class="contact_btn">
+                                            Contact Us
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--{{ $page->name }}-->
+        @endif
 
+    @endforeach
 
-            </div>
-        </div>
-    </div>
-</section>
-<!--Aboutus-->
+@endif
 
 
 <!--Service-->
@@ -77,7 +76,8 @@
                 </div>
                 <div class="col-lg-4 borderLeft">
                     <div class="service_block">
-                        <div class="service_icon icon2  delay-03s animated wow zoomIn"><span><i class="fa fa-apple"></i></span>
+                        <div class="service_icon icon2  delay-03s animated wow zoomIn"><span><i
+                                        class="fa fa-apple"></i></span>
                         </div>
                         <h3 class="animated fadeInUp wow">Apple IOS</h3>
                         <p class="animated fadeInDown wow">Lorem Ipsum is simply dummy text of the printing and
@@ -86,7 +86,8 @@
                 </div>
                 <div class="col-lg-4 borderLeft">
                     <div class="service_block">
-                        <div class="service_icon icon3  delay-03s animated wow zoomIn"><span><i class="fa fa-html5"></i></span>
+                        <div class="service_icon icon3  delay-03s animated wow zoomIn"><span><i
+                                        class="fa fa-html5"></i></span>
                         </div>
                         <h3 class="animated fadeInUp wow">Design</h3>
                         <p class="animated fadeInDown wow">Lorem Ipsum is simply dummy text of the printing and
@@ -106,7 +107,8 @@
                 </div>
                 <div class="col-lg-4 borderLeft mrgTop">
                     <div class="service_block">
-                        <div class="service_icon icon2  delay-03s animated wow zoomIn"><span><i class="fa fa-slack"></i></span>
+                        <div class="service_icon icon2  delay-03s animated wow zoomIn"><span><i
+                                        class="fa fa-slack"></i></span>
                         </div>
                         <h3 class="animated fadeInUp wow">User Research</h3>
                         <p class="animated fadeInDown wow">Lorem Ipsum is simply dummy text of the printing and
@@ -115,7 +117,8 @@
                 </div>
                 <div class="col-lg-4 borderLeft mrgTop">
                     <div class="service_block">
-                        <div class="service_icon icon3  delay-03s animated wow zoomIn"><span><i class="fa fa-users"></i></span>
+                        <div class="service_icon icon3  delay-03s animated wow zoomIn"><span><i
+                                        class="fa fa-users"></i></span>
                         </div>
                         <h3 class="animated fadeInUp wow">User Experience</h3>
                         <p class="animated fadeInDown wow">Lorem Ipsum is simply dummy text of the printing and
@@ -180,7 +183,8 @@
             <!-- Portfolio Item -->
             <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;"
                  class="portfolio-item one-four   appleIOS isotope-item">
-                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic1.jpg') }}" alt="Portfolio 1">
+                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic1.jpg') }}"
+                                                alt="Portfolio 1">
                 </div>
                 <div class="item_overlay">
                     <div class="item_info">
@@ -193,7 +197,8 @@
             <!-- Portfolio Item-->
             <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(337px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;"
                  class="portfolio-item one-four  design isotope-item">
-                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic2.jpg') }}" alt="Portfolio 1">
+                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic2.jpg') }}"
+                                                alt="Portfolio 1">
                 </div>
                 <div class="item_overlay">
                     <div class="item_info">
@@ -206,7 +211,8 @@
             <!-- Portfolio Item -->
             <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(674px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;"
                  class="portfolio-item one-four  design  isotope-item">
-                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic3.jpg') }}" alt="Portfolio 1">
+                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic3.jpg') }}"
+                                                alt="Portfolio 1">
                 </div>
                 <div class="item_overlay">
                     <div class="item_info">
@@ -219,7 +225,8 @@
             <!-- Portfolio Item-->
             <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(1011px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;"
                  class="portfolio-item one-four  android  prototype web isotope-item">
-                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic4.jpg') }}" alt="Portfolio 1">
+                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic4.jpg') }}"
+                                                alt="Portfolio 1">
                 </div>
                 <div class="item_overlay">
                     <div class="item_info">
@@ -232,7 +239,8 @@
             <!-- Portfolio Item -->
             <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;"
                  class="portfolio-item one-four  design isotope-item">
-                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic5.jpg') }}" alt="Portfolio 1">
+                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic5.jpg') }}"
+                                                alt="Portfolio 1">
                 </div>
                 <div class="item_overlay">
                     <div class="item_info">
@@ -245,7 +253,8 @@
             <!-- Portfolio Item -->
             <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(337px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;"
                  class="portfolio-item one-four  web isotope-item">
-                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic6.jpg') }}" alt="Portfolio 1">
+                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic6.jpg') }}"
+                                                alt="Portfolio 1">
                 </div>
                 <div class="item_overlay">
                     <div class="item_info">
@@ -258,7 +267,8 @@
             <!-- Portfolio Item  -->
             <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(674px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;"
                  class="portfolio-item one-four  design web isotope-item">
-                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic7.jpg') }}" alt="Portfolio 1">
+                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic7.jpg') }}"
+                                                alt="Portfolio 1">
                 </div>
                 <div class="item_overlay">
                     <div class="item_info">
@@ -271,7 +281,8 @@
             <!-- Portfolio Item -->
             <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(1011px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;"
                  class="portfolio-item one-four   android isotope-item">
-                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic8.jpg') }}" alt="Portfolio 1">
+                <div class="portfolio_img"><img src="{{ asset('assets/img/portfolio_pic8.jpg') }}"
+                                                alt="Portfolio 1">
                 </div>
                 <div class="item_overlay">
                     <div class="item_info">
@@ -305,10 +316,14 @@
     <div class="client_logos"><!--client_logos-->
         <div class="container">
             <ul class="fadeInRight animated wow">
-                <li><a href="javascript:void(0)"><img src="{{ asset('assets/img/client_logo1.png') }}" alt=""></a></li>
-                <li><a href="javascript:void(0)"><img src="{{ asset('assets/img/client_logo2.png') }}" alt=""></a></li>
-                <li><a href="javascript:void(0)"><img src="{{ asset('assets/img/client_logo3.png') }}" alt=""></a></li>
-                <li><a href="javascript:void(0)"><img src="{{ asset('assets/img/client_logo5.png') }}" alt=""></a></li>
+                <li><a href="javascript:void(0)"><img src="{{ asset('assets/img/client_logo1.png') }}" alt=""></a>
+                </li>
+                <li><a href="javascript:void(0)"><img src="{{ asset('assets/img/client_logo2.png') }}" alt=""></a>
+                </li>
+                <li><a href="javascript:void(0)"><img src="{{ asset('assets/img/client_logo3.png') }}" alt=""></a>
+                </li>
+                <li><a href="javascript:void(0)"><img src="{{ asset('assets/img/client_logo5.png') }}" alt=""></a>
+                </li>
             </ul>
         </div>
     </div>
