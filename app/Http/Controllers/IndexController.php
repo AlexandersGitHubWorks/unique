@@ -7,6 +7,7 @@ use App\Page;
 use App\Portfolio;
 use App\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -16,6 +17,7 @@ class IndexController extends Controller
         $services = Service::all();
         $employees = Employee::all();
         $portfolios = Portfolio::all();
+        $filters = DB::table('portfolios')->distinct()->pluck('filter');
 
         $menu = [];
         foreach ($pages as $page) {
@@ -33,6 +35,7 @@ class IndexController extends Controller
             'services'   => $services,
             'employees'  => $employees,
             'portfolios' => $portfolios,
+            'filters' => $filters,
         ]);
     }
 }

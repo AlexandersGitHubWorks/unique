@@ -4,6 +4,8 @@ use Illuminate\Database\Seeder;
 
 class ServicesSeeder extends Seeder
 {
+    public $text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text.';
+
     /**
      * Run the database seeds.
      *
@@ -13,37 +15,37 @@ class ServicesSeeder extends Seeder
     {
         DB::table('services')->insert([
             'name' => 'Android',
-            'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            'text' => $this->text,
             'icon' => 'fa-android',
         ]);
 
         DB::table('services')->insert([
             'name' => 'Apple Ios',
-            'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            'text' => $this->text,
             'icon' => 'fa-apple',
         ]);
 
         DB::table('services')->insert([
             'name' => 'Design',
-            'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            'text' => $this->text,
             'icon' => 'fa-dropbox',
         ]);
 
         DB::table('services')->insert([
             'name' => 'Concept',
-            'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            'text' => $this->text,
             'icon' => 'fa-html5',
         ]);
 
         DB::table('services')->insert([
             'name' => 'User Research',
-            'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            'text' => $this->text,
             'icon' => 'fa-slack',
         ]);
 
         DB::table('services')->insert([
             'name' => 'User Experience',
-            'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            'text' => $this->text,
             'icon' => 'fa-users',
         ]);
     }

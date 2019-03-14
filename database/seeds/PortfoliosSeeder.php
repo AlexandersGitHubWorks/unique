@@ -52,5 +52,11 @@ class PortfoliosSeeder extends Seeder
             'image' => 'portfolio_pic7.jpg',
             'filter' => 'Android',
         ]);
+
+        DB::table('portfolios')->insert([
+            'name' => 'Some',
+            'image' => 'portfolio_pic8.jpg',
+            'filter' => 'Android',
+        ]);
     }
 }
