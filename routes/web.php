@@ -11,13 +11,9 @@
 |
 */
 
-Route::group(['middleware' => 'web'], function ()
-{
-    Route::match(['get', 'post'], '/', 'IndexController@execute')->name('home');
-    Route::get('/pages/{alias}', 'PageController@execute')->name('page');
-
-    Route::auth();
-});
+Route::match(['get', 'post'], '/', 'IndexController@execute')->name('home');
+Route::get('/pages/{alias}', 'PageController@execute')->name('page');
+Route::auth();
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function ()
 {

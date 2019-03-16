@@ -10,6 +10,8 @@
     <link href="{{ asset('assets/css/font-awesome.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet" type="text/css">
 
+    @csrf
+
     <!--[if lt IE 9]>
     <script src="{{ asset('assets/js/respond-1.1.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/html5shiv.js') }}"></script>
@@ -23,6 +25,8 @@
 <header id="header_wrapper">
     @yield('header')
 </header>
+
+@yield('messages')
 
 <!--Content-->
 @yield('content')
